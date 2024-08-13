@@ -1,18 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-background shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <Link to="/" className="text-2xl font-bold text-gray-900">My Blog</Link>
-          <nav>
-            <ul className="flex space-x-4">
-              <li><Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link></li>
-              <li><Link to="/about" className="text-gray-600 hover:text-gray-900">About</Link></li>
-            </ul>
-          </nav>
+          <Link to="/" className="text-2xl font-bold text-foreground">My Blog</Link>
+          <div className="flex items-center space-x-4">
+            <nav>
+              <ul className="flex space-x-4">
+                <li><Link to="/" className="text-muted-foreground hover:text-foreground">Home</Link></li>
+                <li><Link to="/about" className="text-muted-foreground hover:text-foreground">About</Link></li>
+              </ul>
+            </nav>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </header>
