@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import { Button } from "@/components/ui/button";
+import { PenTool } from "lucide-react";
 
 const Header = () => {
   return (
@@ -15,6 +17,12 @@ const Header = () => {
                 <li><Link to="/about" className="text-muted-foreground hover:text-foreground">About</Link></li>
               </ul>
             </nav>
+            <Link to="/create">
+              <Button variant="outline" size="sm">
+                <PenTool className="h-4 w-4 mr-2" />
+                New Post
+              </Button>
+            </Link>
             <ThemeToggle />
           </div>
         </div>
