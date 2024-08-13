@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import BlogPost from '../components/BlogPost';
+import { toast } from "sonner";
 
 const Index = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -9,6 +10,13 @@ const Index = () => {
     const storedPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
     setBlogPosts(storedPosts);
   }, []);
+
+  const handleDeletePost = (id) => {
+    const updatedPosts = blogPosts.filter(post => post.id !== id);
+    setBlogPosts(updatedPosts);
+    localStorage.setItem('blogPosts', JSON.stringify(updatedPosts));
+    toast.success("Post deleted successfully");
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -20,7 +28,7 @@ const Index = () => {
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post) => (
-              <BlogPost key={post.id} {...post} />
+              <BlogPost key={post.id} {...post} onDelete={handleDeletePost} />
             ))}
           </div>
         )}
